@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/desgin.css') }}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">DripShop</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+      
+  
+    
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/view">View costumers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/delete">Remove costumer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/add">register</a>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/creators">creators</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/desgin.css') }}" />
+</head>
+<body>
+  <div class="container py-5">
+    <h1 class="mb-5 text-center fw-bold">Men's Shirts</h1>
+    <section class="mb-5">
+      <h2 class="mb-4 fw-semibold">Nike</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <div class="discount-badge">-20%</div>
+            <img src="{{ url_for('static', filename='images/nike1.png') }}" class="card-img-top" alt="Nike Man Shirt 1" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Nike Air Tee</h5>
+              <p class="card-text">Lightweight and breathable shirt for athletes.</p>
+              <p class="price">$29.99 <span class="old-price">$37.49</span></p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <div class="discount-badge">-15%</div>
+            <img src="{{ url_for('static', filename='images/nike2.webp') }}" class="card-img-top" alt="Nike Man Shirt 2" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Nike Dri-FIT</h5>
+              <p class="card-text">Moisture-wicking tech to keep you dry.</p>
+              <p class="price">$34.99 <span class="old-price">$40.99</span></p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <img src="{{ url_for('static', filename='images/nike3.webp') }}" class="card-img-top" alt="Nike Man Shirt 3" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Nike Pro Shirt</h5>
+              <p class="card-text">Compression fit for optimal performance.</p>
+              <p class="price">$38.99</p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="mb-4 fw-semibold">Adidas</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <div class="discount-badge">-10%</div>
+            <img src="{{ url_for('static', filename='images/adidas1.jpg') }}" class="card-img-top" alt="Adidas Man Shirt 1" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Adidas Essentials</h5>
+              <p class="card-text">Classic fit with iconic branding.</p>
+              <p class="price">$26.99 <span class="old-price">$29.99</span></p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <img src="{{ url_for('static', filename='images/adidas2.jpg') }}" class="card-img-top" alt="Adidas Man Shirt 2" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Adidas Sport Tee</h5>
+              <p class="card-text">Breathable fabric for active use.</p>
+              <p class="price">$29.99</p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <div class="discount-badge">-12%</div>
+            <img src="{{ url_for('static', filename='images/adidas3.jpg') }}" class="card-img-top" alt="Adidas Man Shirt 3" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Adidas Climacool</h5>
+              <p class="card-text">Stay cool with Climacool ventilation.</p>
+              <p class="price">$27.99 <span class="old-price">$31.99</span></p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="mb-4 fw-semibold">Puma</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <div class="discount-badge">-25%</div>
+            <img src="{{ url_for('static', filename='images/puma1.webp') }}" class="card-img-top" alt="Puma Man Shirt 1" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Puma Classic</h5>
+              <p class="card-text">Sporty look with premium comfort.</p>
+              <p class="price">$22.49 <span class="old-price">$29.99</span></p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <img src="{{ url_for('static', filename='images/puma2.webp') }}" class="card-img-top" alt="Puma Man Shirt 2" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Puma Evostripe</h5>
+              <p class="card-text">Designed for dynamic movement.</p>
+              <p class="price">$25.99</p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <img src="{{ url_for('static', filename='images/puma3.webp') }}" class="card-img-top" alt="Puma Man Shirt 3" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Puma Power Tee</h5>
+              <p class="card-text">Bold style and breathable fabric.</p>
+              <p class="price">$27.49</p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="mb-4 fw-semibold">Under Armour</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <img src="{{ url_for('static', filename='images/uaman1.jpg') }}" class="card-img-top" alt="Under Armour Man Shirt 1" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">UA Tech Shirt</h5>
+              <p class="card-text">Quick-dry fabric for training.</p>
+              <p class="price">$31.99</p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <div class="discount-badge">-10%</div>
+            <img src="{{ url_for('static', filename='images/uaman2.avif') }}" class="card-img-top" alt="Under Armour Man Shirt 2" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">UA HeatGear</h5>
+              <p class="card-text">Stay cool and dry during workouts.</p>
+              <p class="price">$29.49 <span class="old-price">$32.77</span></p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <img src="{{ url_for('static', filename='images/uaman3.avif') }}" class="card-img-top" alt="Under Armour Man Shirt 3" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">UA ColdGear</h5>
+              <p class="card-text">Thermal insulation for cold weather.</p>
+              <p class="price">$34.99</p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="mb-4 fw-semibold">Reebok</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <div class="discount-badge">-18%</div>
+            <img src="{{ url_for('static', filename='images/reeb1.webp') }}" class="card-img-top" alt="Reebok Man Shirt 1" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Reebok Performance</h5>
+              <p class="card-text">Designed for peak performance.</p>
+              <p class="price">$25.99 <span class="old-price">$31.99</span></p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <img src="{{ url_for('static', filename='images/reeb2.jpg') }}" class="card-img-top" alt="Reebok Man Shirt 2" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Reebok Classic Tee</h5>
+              <p class="card-text">Casual style for everyday wear.</p>
+              <p class="price">$22.99</p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <div class="discount-badge">-12%</div>
+            <img src="{{ url_for('static', filename='images/reeb3.avif') }}" class="card-img-top" alt="Reebok Man Shirt 3" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Reebok Flex Tee</h5>
+              <p class="card-text">Flexible fabric for active days.</p>
+              <p class="price">$24.49 <span class="old-price">$27.99</span></p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <h1 class="mb-5 text-center fw-bold">Women's Shirts</h1>
+
+    <section class="mb-5">
+      <h2 class="mb-4 fw-semibold">Nike</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <div class="discount-badge">-15%</div>
+            <img src="{{ url_for('static', filename='images/nikew1.jpg') }}" class="card-img-top" alt="Nike Woman Shirt 1" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Nike Yoga Tee</h5>
+              <p class="card-text">Flexible and soft for yoga sessions.</p>
+              <p class="price">$27.49 <span class="old-price">$32.29</span></p>
+              <a href="/wheel" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <img src="{{ url_for('static', filename='images/nikew2.avif') }}" class="card-img-top" alt="Nike Woman Shirt 2" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Nike Run Tee</h5>
+              <p class="card-text">Breathable fabric designed for running.</p>
+              <p class="price">$29.99</p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <div class="discount-badge">-10%</div>
+            <img src="{{ url_for('static', filename='images/nikew3.webp') }}" class="card-img-top" alt="Nike Woman Shirt 3" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Nike Classic Tee</h5>
+              <p class="card-text">Casual wear with classic Nike logo.</p>
+              <p class="price">$25.49 <span class="old-price">$28.29</span></p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="mb-4 fw-semibold">Adidas</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <img src="{{ url_for('static', filename='images/adidasw1.avif') }}" class="card-img-top" alt="Adidas Woman Shirt 1" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Adidas Comfort Tee</h5>
+              <p class="card-text">Casual wear with soft fabric.</p>
+              <p class="price">$24.99</p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <div class="discount-badge">-8%</div>
+            <img src="{{ url_for('static', filename='images/adidasw2.avif') }}" class="card-img-top" alt="Adidas Woman Shirt 2" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Adidas Essentials Tee</h5>
+              <p class="card-text">Comfortable fit with Adidas stripes.</p>
+              <p class="price">$22.99 <span class="old-price">$24.99</span></p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <img src="{{ url_for('static', filename='images/adidasw3.avif') }}" class="card-img-top" alt="Adidas Woman Shirt 3" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Adidas Clima Tee</h5>
+              <p class="card-text">Keeps you cool and dry during workouts.</p>
+              <p class="price">$26.49</p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="mb-4 fw-semibold">Puma</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <div class="discount-badge">-20%</div>
+            <img src="{{ url_for('static', filename='images/pumaw1.avif') }}" class="card-img-top" alt="Puma Woman Shirt 1" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Puma Soft Tee</h5>
+              <p class="card-text">Light and comfy everyday wear.</p>
+              <p class="price">$19.99 <span class="old-price">$24.99</span></p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <img src="{{ url_for('static', filename='images/pumaw2.avif') }}" class="card-img-top" alt="Puma Woman Shirt 2" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Puma Active Tee</h5>
+              <p class="card-text">Breathable fabric for workouts.</p>
+              <p class="price">$22.49</p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow rounded-4 border-0 h-100">
+            <img src="{{ url_for('static', filename='images/pumaw3.avif') }}" class="card-img-top" alt="Puma Woman Shirt 3" />
+            <div class="card-body text-center">
+              <h5 class="card-title fw-semibold">Puma Style Tee</h5>
+              <p class="card-text">Sporty style with modern cut.</p>
+              <p class="price">$23.99</p>
+              <a href="/add" class="btn btn-primary rounded-pill px-4">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

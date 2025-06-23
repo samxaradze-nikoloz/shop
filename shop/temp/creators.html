@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/desgin.css') }}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">DripShop</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+      
+        </li>
+        <li class="nav-item">
+     
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/view">View costumers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/delete">Remove costumer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/add">Register</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Creators</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/desgin.css') }}">
+</head>
+<body>
+
+  <h2 class="creators-title">Meet the Creators</h2>
+
+  <div class="creators-container">
+    <div class="creator-card">
+      <img src="{{ url_for('static', filename='images/creator1.jpg') }}" alt="Creator 1" class="creator-photo" />
+      <div class="creator-name">Andria gugusvili</div>
+      <div class="creator-bio">
+
+      </div>
+      <div class="creator-social">
+        <a href="https://www.instagram.com/gugus8a_/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+
+    <div class="creator-card">
+      <img src="{{ url_for('static', filename='images/creator2.jpg') }}" alt="Creator 2" class="creator-photo" />
+      <div class="creator-name">Luka gegeshidze</div>
+      <div class="creator-bio">
+    
+      </div>
+      <div class="creator-social">
+        <a href="https://www.instagram.com/gegesha86/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+
+    <div class="creator-card">
+      <img src="{{ url_for('static', filename='images/creator3.jpg') }}" alt="Creator 3" class="creator-photo" />
+      <div class="creator-name">Nikoloz samkharadze</div>
+      <div class="creator-bio">
+
+      </div>
+      <div class="creator-social">
+        <a href="https://www.instagram.com/stories/nika_samxaradze4/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/desgin.css') }}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">DripShop</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+      
+        </li>
+        <li class="nav-item">
+
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/view">View Costumers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/delete">Remove Costumer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/creators">creators</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+<html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Employee</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/desgin.css') }}">
+</head>
+<body>
+    <h2 class="header">REGISTER</h2>
+    <form action="/savedetails" method="post">
+        <table class="form-table">
+            <tr><td class="label">Name</td><td><input type="text" name="name" class="input-field" required></td></tr>
+            <tr><td class="label">Email</td><td><input type="email" name="email" class="input-field" required></td></tr>
+            <tr><td class="label">Address</td><td><input type="text" name="address" class="input-field" required></td></tr>
+
+            <tr><td class="label">Card Number</td><td><input type="text" name="card_number" class="input-field" placeholder="1234 5678 9012" required></td></tr>
+            <tr><td class="label">Expire Date</td><td><input type="text" name="expiry_date" class="input-field" placeholder="MM/YY" required></td></tr>
+            <tr><td class="label">CVV</td><td><input type="password" name="cvv" class="input-field" placeholder="123" required></td></tr>
+            <tr><td class="label">Cardholder Name</td><td><input type="text" name="cardholder_name" class="input-field" required></td></tr>
+
+            <tr><td colspan="2" href="/success" class="submit-row"><input type="submit" value="Submit" class="submit-button"></td></tr>
+        </table>
+    </form>
+
+    <div style="margin-top: 10px; text-align:center;">
+        <a href="/" class="back-button">Back to Main Page</a>
+    </div>
+</body>
+</html>
+
+
+
+
+

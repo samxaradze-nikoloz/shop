@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Segmented Prize Wheel</title>
+    <style>
+    body {
+        background: #181818;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        display: flex; justify-content: center; align-items: center; min-height: 100vh;
+    }
+    .wheel-container {
+        text-align: center;
+    }
+    #wheel {
+        margin: 0 auto 30px auto;
+        width: 400px; height: 400px;
+        position: relative;
+        border-radius: 50%;
+    }
+    .wheel-arrow {
+        position: absolute;
+        top: -38px; left: 50%;
+        transform: translateX(-50%);
+        font-size: 3.2rem;
+        color: gold;
+        z-index: 10;
+        text-shadow: 0 2px 12px #fff6, 0 0 16px #ffd70080;
+    }
+    .wheel-svg {
+        width: 100%; height: 100%;
+        display: block;
+        border-radius: 50%;
+        box-shadow: 0 2px 24px #000b;
+        background: #fff;
+    }
+    .wheel-segment {
+        cursor: pointer;
+        transition: filter 0.2s;
+    }
+    .wheel-segment.winning {
+        filter: drop-shadow(0 0 10px #ffd700cc);
+    }
+    .wheel-segment .wheel-segment-text {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        font-weight: bold;
+        text-shadow: 0 1px 8px #fff,0 0 10px #ffd70088;
+        font-size: 1.1em;
+        letter-spacing: 2px;
+        pointer-events: none;
+    }
+    .wheel-segment.winning .wheel-segment-text {
+        fill: url(#gold-gradient);
+        stroke: #fffbe9;
+        stroke-width: 1px;
+        text-transform: uppercase;
+    }
+    .wheel-segment.nothing .wheel-segment-text {
+        fill: #111;
+        stroke: #fff;
+        stroke-width: 0.7px;
+        opacity: 0.93;
+    }
+    #spin-btn {
+        background: linear-gradient(90deg,#222,#fff 160%);
+        color: #ffd700;
+        border: 2px solid #ffd700;
+        border-radius: 30px;
+        padding: 15px 60px;
+        font-size: 1.25rem;
+        cursor: pointer;
+        font-weight: bold;
+        margin-bottom: 18px;
+        margin-top: 10px;
+        transition: box-shadow 0.2s, background 0.2s, transform 0.2s;
+        box-shadow: 0 2px 20px #fff2, 0 0 0 transparent;
+        letter-spacing: 2px;
+        text-shadow: 0 2px 8px #fff8, 0 0 4px #ffd70080;
+    }
+    #spin-btn:hover {
+        background: linear-gradient(90deg,#fff,#ffd700 100%);
+        color: #181818;
+        transform: scale(1.10);
+        box-shadow: 0 3px 24px #ffd70055;
+        border: 2px solid #222;
+    }
+    .wheel-result {
+        margin-top: 32px;
+        min-height: 90px;
+        font-size: 1.35rem;
+    }
+    .winner {
+        display: flex; flex-direction: column; align-items: center;
+        animation: popwin 0.8s cubic-bezier(.19,1,.22,1);
+    }
+    @keyframes popwin {
+        0% { transform: scale(0.6) rotate(-10deg); opacity: 0.2;}
+        70% { transform: scale(1.08) rotate(2deg); opacity: 1;}
+        100% { transform: scale(1) rotate(0); }
+    }
+    .winner .result-main {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #ffd700;
+        letter-spacing: 2px;
+        margin-bottom: 7px;
+        text-shadow: 0 2px 10px #fff4, 0 0 20px #ffd70080;
+        animation: goldglow 2.1s infinite alternate;
+        text-transform: uppercase;
+    }
+    @keyframes goldglow {
+        0% { color: #ffd700; text-shadow: 0 2px 10px #fff4,0 0 20px #ffd70080;}
+        100% { color: #fffbe9; text-shadow: 0 2px 16px #ffd70088,0 0 30px #fffbe9;}
+    }
+    .winner .result-desc {
+        font-size: 1.22rem;
+        color: #fff;
+        margin-bottom: 5px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        text-shadow: 0 1px 6px #222b;
+    }
+    .winner img {
+        width: 110px;
+        height: 110px;
+        margin: 18px 0 4px 0;
+        border-radius: 18px;
+        box-shadow: 0 2px 12px #ffd70055;
+        background: #fff;
+        object-fit: contain;
+        border: 2.5px solid #ffd700;
+    }
+    .winner.nothing .result-main {
+        color: #111;
+        background: #fff;
+        border-radius: 10px;
+        padding: 6px 21px 6px 21px;
+        box-shadow: 0 1px 14px #fff7;
+        text-shadow: 0 2px 8px #fff8,0 1px 2px #ffd70044;
+        animation: none;
+    }
+    .winner.nothing .result-desc {
+        color: #111;
+        background: #fff;
+        border-radius: 8px;
+        margin-top: 8px;
+        font-size: 1rem;
+        text-shadow: none;
+        box-shadow: 0 1px 8px #fff5;
+        opacity: 0.87;
+    }
+    </style>
+</head>
+<body>
+<div class="wheel-container">
+    <div id="wheel" class="wheel">
+        <div class="wheel-arrow">&#11044;</div>
+        <svg class="wheel-svg" id="wheel-svg" viewBox="0 0 400 400"></svg>
+    </div>
+    <button id="spin-btn">SPIN</button>
+    <div id="result" class="wheel-result"></div>
+</div>
+<script>
+const prizeImages = [
+    "static/images/nike1.png",
+    "static/images/sigma.jpg",
+    "static/images/puma1.webp",
+    "static/images/lela.jpg"
+];
+const outcomes = [
+    {type: 'winning'},
+    {type: 'nothing', label: "Try Again"},
+    {type: 'winning'},
+    {type: 'nothing', label: "No Luck"},
+    {type: 'winning'},
+    {type: 'nothing', label: "Missed"},
+    {type: 'nothing', label: "Lost"},
+    {type: 'winning'},
+    {type: 'nothing', label: "No Win"},
+    {type: 'nothing', label: "So Close"}
+];
+const n = outcomes.length;
+const deg = 360/n;
+const wheelRadius = 200;
+const center = {x: 200, y: 200};
+
+function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+    const angleInRadians = (angleInDegrees-90) * Math.PI / 180.0;
+    return {
+        x: centerX + (radius * Math.cos(angleInRadians)),
+        y: centerY + (radius * Math.sin(angleInRadians))
+    };
+}
+
+function describeArc(x, y, radius, startAngle, endAngle){
+    const start = polarToCartesian(x, y, radius, endAngle);
+    const end = polarToCartesian(x, y, radius, startAngle);
+    const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+    const d = [
+        "M", x, y,
+        "L", start.x, start.y,
+        "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y,
+        "Z"
+    ].join(" ");
+    return d;
+}
+
+function drawWheelSVG() {
+    const svg = document.getElementById('wheel-svg');
+    svg.innerHTML = `
+        <defs>
+            <linearGradient id="gold-gradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="10%" stop-color="#ffd700"/>
+                <stop offset="80%" stop-color="#fffbe9"/>
+            </linearGradient>
+        </defs>
+    `;
+    for(let i=0;i<n;i++) {
+        const o = outcomes[i];
+        const startAngle = i*deg;
+        const endAngle = (i+1)*deg;
+        const path = describeArc(center.x, center.y, wheelRadius, startAngle, endAngle);
+        const bg = i%2 === 0 ? "#fff" : "#111";
+        const isWin = o.type === 'winning';
+        const segClass = isWin ? "winning" : "nothing";
+        const arc = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        arc.setAttribute("d", path);
+        arc.setAttribute("fill", isWin ? (i%2===0 ? "#fffbe9" : "#222107") : bg);
+        arc.setAttribute("class", `wheel-segment ${segClass}`);
+        svg.appendChild(arc);
+
+        // Text
+        const textAngle = startAngle + deg/2;
+        const textRadius = 140;
+        const textPoint = polarToCartesian(center.x, center.y, textRadius, textAngle);
+        const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        text.setAttribute("x", textPoint.x);
+        text.setAttribute("y", textPoint.y);
+        text.setAttribute("text-anchor", "middle");
+        text.setAttribute("alignment-baseline", "middle");
+        text.setAttribute("class", "wheel-segment-text");
+        text.setAttribute("font-size", "20");
+        text.setAttribute("transform", `rotate(${textAngle} ${textPoint.x} ${textPoint.y})`);
+        let displayText = isWin ? "PRIZE" : (o.label || "");
+        let lines = displayText.split('\n');
+        lines.forEach((line, idx) => {
+            const tspan = document.createElementNS("http://www.w3.org/2000/svg",'tspan');
+            tspan.setAttribute('x', textPoint.x);
+            tspan.setAttribute('dy', idx === 0 ? '0' : '1.2em');
+            tspan.innerHTML = line;
+            text.appendChild(tspan);
+        });
+        if(isWin) {
+            text.setAttribute("fill", "url(#gold-gradient)");
+            text.setAttribute("stroke", "#fffbe9");
+            text.setAttribute("stroke-width", "1");
+        } else {
+            text.setAttribute("fill", "#111");
+            text.setAttribute("stroke", "#fff");
+            text.setAttribute("stroke-width", "0.7");
+            text.setAttribute("opacity", "0.9");
+        }
+        svg.appendChild(text);
+    }
+}
+drawWheelSVG();
+
+let spinning = false, currentRotation = 0;
+document.getElementById('spin-btn').onclick = function() {
+    if(spinning) return;
+    spinning = true;
+    document.getElementById('result').innerHTML = '';
+    let idx;
+    if (Math.random() < 0.15) {
+        const winIdxs = outcomes.map((o, i) => o.type === 'winning' ? i : -1).filter(i => i !== -1);
+        idx = winIdxs[Math.floor(Math.random() * winIdxs.length)];
+    } else {
+        const nothingIdxs = outcomes.map((o, i) => o.type === 'nothing' ? i : -1).filter(i => i !== -1);
+        idx = nothingIdxs[Math.floor(Math.random() * nothingIdxs.length)];
+    }
+    const randSpins = Math.floor(Math.random()*2+4);
+    const targetAngle = 360 - (idx * deg + deg/2);
+    currentRotation += randSpins * 360 + targetAngle;
+    const svg = document.getElementById('wheel-svg');
+    svg.style.transition = "transform 3.2s cubic-bezier(.17,.67,.83,.67)";
+    svg.style.transform = `rotate(${currentRotation}deg)`;
+    setTimeout(() => {
+        spinning = false;
+        svg.style.transition = "none";
+        svg.style.transform = `rotate(${currentRotation%360}deg)`;
+        if(outcomes[idx].type === 'winning') {
+            const imgSrc = "/" + prizeImages[Math.floor(Math.random()*prizeImages.length)];
+            document.getElementById('result').innerHTML =
+            `<div class="winner congrats">
+                <div class="result-main">🎉 Congratulations!</div>
+                <img src="${imgSrc}" alt="Prize">
+                <div class="result-desc">You won a PRIZE!</div>
+            </div>`;
+        } else {
+            document.getElementById('result').innerHTML =
+            `<div class="winner nothing">
+                <div class="result-main">SMH</div>
+                <div class="result-desc">Try again for a chance to win.</div>
+            </div>`;
+        }
+    }, 3200);
+};
+</script>
+</body>
+</html>
